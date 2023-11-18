@@ -39,7 +39,6 @@ app.use("/auth", authRouter);
 io.use(wrap(sessionMiddleware));
 io.use((socket, next) => {
   if (!socket.request.session || !socket.request.session.user) {
-    console.log("Bad request!");
     next(new Error("Not authorized"));
   } else {
     next();
